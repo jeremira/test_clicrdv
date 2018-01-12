@@ -1,0 +1,41 @@
+<%= form_for(@intervention) do |f| %>
+  <% if @intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% @intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :calendar_id %><br>
+    <%= f.select(
+        :calendar_id,
+        options_from_collection_for_select(
+          Calendar.all,
+          :id,
+          :name,
+          f.object.calendar_id
+        )
+    ) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
