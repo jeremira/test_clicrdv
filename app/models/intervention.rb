@@ -1,6 +1,6 @@
 class Intervention < ActiveRecord::Base
   # Associations
-  belongs_to :calendars
+  belongs_to :calendar
 
   # Validations
   validates :name, presence: true
