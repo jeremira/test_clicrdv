@@ -1,3 +1,7 @@
 class Calendar < ActiveRecord::Base
-  validate :name, presence: true, uniqueness: true
+  # Associations
+  has_many :interventions
+
+  # Validations
+  validates :name, presence: true, uniqueness: true
 end
