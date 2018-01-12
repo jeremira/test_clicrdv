@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Openings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Calendar</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @openings.each do |opening| %>
+      <tr>
+        <td><%= opening.calendar_id %></td>
+        <td><%= opening.start_at %></td>
+        <td><%= opening.end_at %></td>
+        <td><%= link_to 'Show', [:admin, @calendar, opening] %></td>
+        <td><%= link_to 'Edit', edit_admin_calendar_opening_path(@calendar.id, opening) %></td>
+        <td><%= link_to 'Destroy', [:admin, @calendar, opening], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Opening', new_admin_calendar_opening_path %>

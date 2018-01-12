@@ -1,0 +1,29 @@
+<%= form_for([:admin, @calendar, @opening]) do |f| %>
+  <% if @opening.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@opening.errors.count, "error") %> prohibited this opening from being saved:</h2>
+
+      <ul>
+      <% @opening.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :calendar_id %><br>
+    <%= f.number_field :calendar_id %>
+  </div>
+  <div class="field">
+    <%= f.label :start_at %><br>
+    <%= f.datetime_select :start_at %>
+  </div>
+  <div class="field">
+    <%= f.label :end_at %><br>
+    <%= f.datetime_select :end_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

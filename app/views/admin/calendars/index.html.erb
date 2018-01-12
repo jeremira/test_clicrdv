@@ -14,9 +14,9 @@
     <% @calendars.each do |calendar| %>
       <tr>
         <td><%= calendar.name %></td>
-        <td><%= link_to 'Show', calendar %></td>
-        <td><%= link_to 'Edit', edit_calendar_path(calendar) %></td>
-        <td><%= link_to 'Destroy', calendar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [:admin, calendar] %></td>
+        <td><%= link_to 'Edit', edit_admin_calendar_path(calendar) %></td>
+        <td><%= link_to 'Destroy', [:admin, calendar], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Calendar', new_calendar_path %>
+<%= link_to 'New Calendar', new_admin_calendar_path %>
