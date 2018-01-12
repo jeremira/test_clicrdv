@@ -1,28 +1,15 @@
-== README
+# Technical test for clicrdv candidates
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The goal of this test is to write an algorithm to retrieve the available time slots for a given calendar.
 
-Things you may want to cover:
+In order to pass this test, follow those steps :
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Fork this repository
+2. Download or clone the forked repository locally
+3. Run `bundle install`
+4. Run `bundle exec rake db:setup` (make sure you have installed mysql)
+5. Run `bundle exec rake db:migrate`
+6. Run `rails s`
+7. Start development...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
