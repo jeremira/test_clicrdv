@@ -1,11 +1,10 @@
 class Admin::OpeningsController < ApplicationController
   before_action :set_opening, only: [:show, :edit, :update, :destroy]
-  before_action :calendar
 
   # GET /openings
   # GET /openings.json
   def index
-    @openings = Opening.where(calendar_id: params[:calendar_id]).all
+    @openings = calendar.openings.all
   end
 
   # GET /openings/1
@@ -15,7 +14,7 @@ class Admin::OpeningsController < ApplicationController
 
   # GET /openings/new
   def new
-    @opening = Opening.new(calendar_id: params[:calendar_id])
+    @opening = calendar.openings.new
   end
 
   # GET /openings/1/edit
@@ -25,11 +24,11 @@ class Admin::OpeningsController < ApplicationController
   # POST /openings
   # POST /openings.json
   def create
-    @opening = Opening.new(opening_params)
+    @opening = calendar.openings.new(opening_params)
 
     respond_to do |format|
       if @opening.save
-        format.html { redirect_to [:admin, @calendar, @opening], notice: 'Opening was successfully created.' }
+        format.html { redirect_to [:admin, calendar, @opening], notice: 'Opening was successfully created.' }
         format.json { render :show, status: :created, location: @opening }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class Admin::OpeningsController < ApplicationController
   def update
     respond_to do |format|
       if @opening.update(opening_params)
-        format.html { redirect_to [:admin, @calendar, @opening], notice: 'Opening was successfully updated.' }
+        format.html { redirect_to [:admin, calendar, @opening], notice: 'Opening was successfully updated.' }
         format.json { render :show, status: :ok, location: @opening }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class Admin::OpeningsController < ApplicationController
   def destroy
     @opening.destroy
     respond_to do |format|
-      format.html { redirect_to admin_openings_url, notice: 'Opening was successfully destroyed.' }
+      format.html { redirect_to admin_calendar_openings_url, notice: 'Opening was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,9 +65,7 @@ class Admin::OpeningsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_opening
-    @opening = calendar.openings.
-      where(calendar_id: params[:calendar_id]).
-      find(params[:id])
+    @opening = Opening.where(calendar_id: params[:calendar_id]).find(params[:id])
   end
 
   def calendar

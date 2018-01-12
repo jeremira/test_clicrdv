@@ -1,4 +1,4 @@
 class Opening < ActiveRecord::Base
   # Association
-  belongs_to :calendars
+  belongs_to :calendar
 end

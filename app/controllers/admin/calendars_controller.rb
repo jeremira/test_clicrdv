@@ -28,7 +28,7 @@ class Admin::CalendarsController < ApplicationController
 
     respond_to do |format|
       if @calendar.save
-        format.html { redirect_to @calendar, notice: 'Calendar was successfully created.' }
+        format.html { redirect_to [:admin, @calendar], notice: 'Calendar was successfully created.' }
         format.json { render :show, status: :created, location: @calendar }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::CalendarsController < ApplicationController
   def update
     respond_to do |format|
       if @calendar.update(calendar_params)
-        format.html { redirect_to @calendar, notice: 'Calendar was successfully updated.' }
+        format.html { redirect_to [:admin, @calendar], notice: 'Calendar was successfully updated.' }
         format.json { render :show, status: :ok, location: @calendar }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::CalendarsController < ApplicationController
   def destroy
     @calendar.destroy
     respond_to do |format|
-      format.html { redirect_to calendars_url, notice: 'Calendar was successfully destroyed.' }
+      format.html { redirect_to admin_calendars_url, notice: 'Calendar was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

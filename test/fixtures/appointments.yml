@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calendar_id: 1
+  intervention_id: 2
+  start_at: 2018-01-12 17:20:00
+  end_at: 2018-01-12 17:40:00
+  customer_name: 'Idy Braoui'
+
+two:
+  calendar_id: 1
+  intervention_id: 1
+  start_at: 2018-01-12 16:00:00
+  end_at: 2018-01-12 16:10:00
+  customer_name: 'Robert Dupond'

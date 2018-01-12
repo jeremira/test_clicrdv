@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calendar: :one
+  start_at: 2018-01-12 09:00:00
+  end_at: 2018-01-12 12:00:00
+
+two:
+  calendar: :one
+  start_at: 2018-01-12 14:00:00
+  end_at: 2018-01-12 18:00:00

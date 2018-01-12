@@ -28,7 +28,7 @@ class Admin::InterventionsController < ApplicationController
 
     respond_to do |format|
       if @intervention.save
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
+        format.html { redirect_to [:admin, @intervention], notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::InterventionsController < ApplicationController
   def update
     respond_to do |format|
       if @intervention.update(intervention_params)
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully updated.' }
+        format.html { redirect_to [:admin, @intervention], notice: 'Intervention was successfully updated.' }
         format.json { render :show, status: :ok, location: @intervention }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::InterventionsController < ApplicationController
   def destroy
     @intervention.destroy
     respond_to do |format|
-      format.html { redirect_to interventions_url, notice: 'Intervention was successfully destroyed.' }
+      format.html { redirect_to admin_interventions_url, notice: 'Intervention was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

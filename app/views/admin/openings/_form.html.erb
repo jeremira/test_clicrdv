@@ -1,4 +1,4 @@
-<%= form_for([:admin, @calendar, @opening]) do |f| %>
+<%= form_for([:admin, @opening.calendar, @opening]) do |f| %>
   <% if @opening.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@opening.errors.count, "error") %> prohibited this opening from being saved:</h2>
