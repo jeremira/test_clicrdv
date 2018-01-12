@@ -36,7 +36,8 @@ api route.
 
 ##### Example 
 
-Imagine we have a calendar named _Dr Dupont_ which is open on the 01/11/2018 from **8 AM to 12 AM**. 
+Imagine we have a calendar named _Dr Dupont_ which is open on the 01/11/2018 from **8 AM to 12 AM** and 
+configured with an interval of 10 minutes. 
 This calendar can do the interventions _massage_ (30 minutes) and _hair removal_ (40 minutes). 
 Two people already booked an appointment for this calendar : 
 - Toto booked a _massage_ at **9 AM**
@@ -44,17 +45,9 @@ Two people already booked an appointment for this calendar :
 
 Regarding the given elements, if we ask for the available time slots of _Dr Dupont_, the 01/11/2018 for a _massage_, 
 the result shall be : 
-- 08:00 AM
-- 08:10 AM
-- 08:20 AM
-- 08:30 AM
-- 09:30 AM
-- 10:40 AM
-- 10:50 AM
-- 11:00 AM
-- 11:10 AM
-- 11:20 AM
-- 11:30 AM
+
+`["2018-01-11 08:00:00", "2018-01-11 08:10:00", "2018-01-11 08:20:00", "2018-01-11 08:30:00", "2018-01-11 09:30:00", 
+"2018-01-11 10:40:00", "2018-01-11 10:50:00", "2018-01-11 11:00:00", "2018-01-11 11:10:00", "2018-01-11 11:20:00", "2018-01-11 11:30:00"]`
 
 ### Getting started
 In order to pass this test, follow those steps :
