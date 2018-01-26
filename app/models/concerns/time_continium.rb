@@ -1,4 +1,4 @@
-module SpaceContinium
+module TimeContinium
 #Custom validation rules for model dealing with time
 
   def end_come_after_start

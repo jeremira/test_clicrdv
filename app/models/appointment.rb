@@ -1,5 +1,5 @@
 class Appointment < ActiveRecord::Base
-  include SpaceContinium
+  include TimeContinium
   # Associations
   belongs_to :calendar
   belongs_to :intervention

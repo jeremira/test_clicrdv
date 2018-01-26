@@ -1,5 +1,5 @@
 class Opening < ActiveRecord::Base
-  include SpaceContinium
+  include TimeContinium
   # Association
   belongs_to :calendar
 
@@ -16,7 +16,7 @@ class Opening < ActiveRecord::Base
   private
 
     def does_not_overlap
-      if Opening.overlaping(start_at, end_at).count > 0
+      if self.calendar.openings.overlaping(start_at, end_at).count > 0
         errors.add(:base, 'Your new opening is overlapping a previous one.')
       end
     end
