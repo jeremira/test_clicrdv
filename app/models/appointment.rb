@@ -1,4 +1,5 @@
 class Appointment < ActiveRecord::Base
+  include SpaceContinium
   # Associations
   belongs_to :calendar
   belongs_to :intervention
@@ -9,4 +10,5 @@ class Appointment < ActiveRecord::Base
   validates :start_at, presence: true
   validates :end_at, presence: true
   validates :customer_name, presence: true
+  validate :end_come_after_start
 end
