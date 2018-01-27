@@ -33,6 +33,8 @@ RSpec.describe PlanningFiller do
     expect(planning.appointments).to eq []
     expect(planning.break_time).to eq 0
     expect(planning.duration).to eq 0
+    expect(planning.all_possible_rdv).to eq []
+    expect(planning.possible_rdv).to eq({start_at: nil, end_at: nil, green: false})
   end
 
   context "Initialisation" do
@@ -56,7 +58,6 @@ RSpec.describe PlanningFiller do
       planning = PlanningFiller.new(params)
       expect(planning.duration).to eq 45
     end
-
   end
 
 
