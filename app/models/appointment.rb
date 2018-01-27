@@ -11,4 +11,5 @@ class Appointment < ActiveRecord::Base
   validates :end_at, presence: true
   validates :customer_name, presence: true
   validate :end_come_after_start
+  validate :is_on_same_day
 end

@@ -14,9 +14,17 @@ RSpec.describe Appointment, type: :model do
     appointment.end_at = nil
     expect(appointment).to_not be_valid
   end
-  it "does not disturb space continium" do
-    appointment.start_at = DateTime.now
-    appointment.end_at = 1.month.ago
+  it "cant end before to start" do
+    appointment.start_at = DateTime.new(2012,01,01,14,00,00)
+    appointment.end_at = DateTime.new(2012,01,01,13,00,00)
+    expect(appointment).to_not be_valid
+  end
+  it "has to be on the same day" do
+    appointment.start_at = DateTime.new(2012,01,01,14,00,00)
+    appointment.end_at = DateTime.new(2012,01,02,15,00,00)
+    expect(appointment).to_not be_valid
+    appointment.start_at = DateTime.new(2012,01,02,14,00,00)
+    appointment.end_at = DateTime.new(2012,01,01,15,00,00)
     expect(appointment).to_not be_valid
   end
   it "require a customer name" do

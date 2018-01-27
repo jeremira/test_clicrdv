@@ -12,6 +12,7 @@ class Opening < ActiveRecord::Base
   validates :end_at, presence: true
   validate :end_come_after_start
   validate :does_not_overlap
+  validate :is_on_same_day
 
   private
 

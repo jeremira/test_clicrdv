@@ -15,9 +15,17 @@ RSpec.describe Opening, type: :model do
     opening.end_at = nil
     expect(opening).to_not be_valid
   end
-  it "does not disturb space continium" do
-    opening.start_at = DateTime.now
-    opening.end_at = 1.month.ago
+  it "cant end before to start" do
+    opening.start_at = DateTime.new(2012,01,01,14,00,00)
+    opening.end_at = DateTime.new(2012,01,01,13,00,00)
+    expect(opening).to_not be_valid
+  end
+  it "has to be on the same day" do
+    opening.start_at = DateTime.new(2012,01,01,14,00,00)
+    opening.end_at = DateTime.new(2012,01,02,15,00,00)
+    expect(opening).to_not be_valid
+    opening.start_at = DateTime.new(2012,01,02,14,00,00)
+    opening.end_at = DateTime.new(2012,01,01,15,00,00)
     expect(opening).to_not be_valid
   end
 
