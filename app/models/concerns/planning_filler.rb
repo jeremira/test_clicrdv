@@ -1,15 +1,15 @@
 class PlanningFiller
 
-  attr_accessor :openings, :appointments, :break_time, :duration,
-                :all_possible_rdv, :possible_rdv
+  attr_accessor :openings, :appointments, :interval, :duration,
+                :green_spots, :slot
 
   def initialize params = {}
-    @openings    = params[:openings]      || []
-    @appointments = params[:appointments] || []
-    @break_time  = params[:break_time]    || 0
-    @duration    = params[:duration]      || 0
-    @all_possible_rdv = []
-    @possible_rdv = {start_at: nil, end_at: nil, green: false}
+    @openings     = params[:openings]      || []
+    @appointments = params[:appointments]  || []
+    @interval     = params[:interval]      || 10
+    @duration     = params[:duration]      || 0
+    @green_spots  = []
+    @slot = {start_at: nil, end_at: nil}
   end
 
   private
