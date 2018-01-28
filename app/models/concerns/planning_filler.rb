@@ -46,7 +46,7 @@ class PlanningFiller
   end
 
   private
-
+    
     def we_have_time_to_work opening, slot
       slot[:start_at] + duration <= opening[:end_at]
     end
