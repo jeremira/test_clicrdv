@@ -172,10 +172,12 @@ RSpec.describe PlanningFiller do
     end
   end
   context "readme example context" do
-    it "find all free slots" do
-      params = { openings: [rei_opening],
+    before :each do
+      @params = { openings: [rei_opening],
                  appointments: [rei_appointment1, rei_appointment2],
                  interval: 10, duration: 30 }
+    end
+    it "find all free slots" do
       expected_planning_output = [
         {start_at: DateTime.new(2018,11,1,8,0,0), end_at: DateTime.new(2018,11,1,8,30,0) },
         {start_at: DateTime.new(2018,11,1,8,10,0), end_at: DateTime.new(2018,11,1,8,40,0) },
@@ -189,9 +191,20 @@ RSpec.describe PlanningFiller do
         {start_at: DateTime.new(2018,11,1,11,20,0), end_at: DateTime.new(2018,11,1,11,50,0) },
         {start_at: DateTime.new(2018,11,1,11,30,0), end_at: DateTime.new(2018,11,1,12,0,0) }
       ]
-      planning = PlanningFiller.new(params)
+      planning = PlanningFiller.new(@params)
       planning.make_my_planning
       expect(planning.green_spots).to eq expected_planning_output
+    end
+    it "return all possible start time" do
+      expected_planning_output = [
+        "2018-01-11 08:00:00", "2018-01-11 08:10:00", "2018-01-11 08:20:00",
+        "2018-01-11 08:30:00", "2018-01-11 09:30:00", "2018-01-11 10:40:00",
+        "2018-01-11 10:50:00", "2018-01-11 11:00:00", "2018-01-11 11:10:00",
+        "2018-01-11 11:20:00", "2018-01-11 11:30:00"
+      ]
+      planning = PlanningFiller.new(@params)
+      planning.make_my_planning
+      expect(planning.all_free_starting).to eq expected_planning_output
     end
   end
 
